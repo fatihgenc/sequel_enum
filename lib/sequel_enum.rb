@@ -23,7 +23,11 @@ module Sequel
           end
 
           define_method "#{column}=" do |value|
-            val = self.class.enums[column].assoc(value.to_sym)
+            if value.is_a? Integer
+              val = self.class.enums[column].rassoc(value)
+            else
+              val = self.class.enums[column].assoc(value.to_sym) if value
+            end
             self[column] = val && val.last
           end
 

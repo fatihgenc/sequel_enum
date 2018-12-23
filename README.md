@@ -46,6 +46,10 @@ end
 
 item = Item.create(:condition => :mint)
 
+or 
+
+item = Item.create(:condition => 10)
+
 print item[:condition] #> 10
 ```
 

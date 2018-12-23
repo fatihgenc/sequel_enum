@@ -90,6 +90,19 @@ describe "sequel_enum" do
           expect(item[:condition]).to be_nil
         end
       end
+      context "with a valid index" do
+        it "should set column to the value by index" do
+          item.condition = 0
+          expect(item[:condition]).to be 0
+        end
+      end
+      
+      context "with an invalid index" do
+        it "should set column to nil" do
+          item.condition = 6
+          expect(item[:condition]).to be_nil
+        end
+      end
     end
 
     describe "#column" do
